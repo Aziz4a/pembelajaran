@@ -1,0 +1,48 @@
+<section class="lkpd-section fade-in">
+  <div class="lkpd-container">
+    <h2>📘 Pilih LKPD</h2>
+    <p>Pilih salah satu LKPD untuk memulai kegiatan belajar.</p>
+
+    <div class="lkpd-grid">
+      <div class="lkpd-card" data-lkpd="lkpd1.html">
+        <h3>LKPD 1</h3>
+        <p>Pengantar konsep volume kubus dan balok.</p>
+      </div>
+
+      <div class="lkpd-card" data-lkpd="lkpd2.html">
+        <h3>LKPD 2</h3>
+        <p>Menghitung volume bangun gabungan sederhana.</p>
+      </div>
+
+      <div class="lkpd-card" data-lkpd="lkpd3.html">
+        <h3>LKPD 3</h3>
+        <p>Menentukan luas permukaan bangun gabungan.</p>
+      </div>
+
+      <div class="lkpd-card" data-lkpd="lkpd4.html">
+        <h3>LKPD 4</h3>
+        <p>Menerapkan konsep volume pada kehidupan nyata.</p>
+      </div>
+
+      <div class="lkpd-card" data-lkpd="lkpd5.html">
+        <h3>LKPD 5</h3>
+        <p>Menguraikan bangun ruang dan visualisasi 3D.</p>
+      </div>
+
+      <!-- LKPD 6 removed (not used) -->
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.lkpd-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const lkpdFile = card.getAttribute('data-lkpd');
+      loadPage(`lkpd/${lkpdFile}`, 'lkpd');
+    });
+  });
+
+  document.getElementById('closeLkpdBtn').addEventListener('click', () => {
+    showMenu();
+  });
+</script>

@@ -1,0 +1,66 @@
+/* ========== Background Halaman Quiz ========== */
+body[data-page="quiz"] {
+  background-image: url('../../img/game.jpg'); /* Pastikan path-nya benar */
+  background-size: cover;
+  background-position: center;
+}
+
+/* ========== Grid untuk Halaman Quiz ========== */
+.quiz-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 22px;
+}
+
+.quiz-card {
+  background: #e8f7ff;
+  border: 2px solid #a0c4ff;
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: .25s;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.quiz-card:hover {
+  background: #d7e7ff;
+  transform: translateY(-2px);
+}
+
+/* ========== Tombol Mulai Quiz ========== */
+.start-quiz-btn {
+  padding: 14px 28px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
+  transition: background 0.3s ease;
+}
+
+.start-quiz-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ========== Kembali ke Menu Utama ========== */
+.backToMenuBtn {
+  margin-top: 20px;
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.backToMenuBtn:hover {
+  background: #1d4ed8;
+}

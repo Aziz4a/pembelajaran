@@ -1,0 +1,66 @@
+/* ========== Background Halaman Evaluasi ========== */
+body[data-page="evaluasi"] {
+  background-image: url('../../img/evaluasi.jpg'); /* Pastikan path-nya benar */
+  background-size: cover;
+  background-position: center;
+}
+
+/* ========== Grid untuk Halaman Evaluasi ========== */
+.evaluasi-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 22px;
+}
+
+.evaluasi-card {
+  background: #f0f9ff;
+  border: 2px solid #bcd3ff;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: .25s;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.evaluasi-card:hover {
+  background: #d6e7ff;
+  transform: translateY(-2px);
+}
+
+/* ========== Tombol Simpan Skor ========== */
+.save-score-btn {
+  padding: 14px 28px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
+  transition: background 0.3s ease;
+}
+
+.save-score-btn:hover {
+  background: #059669;
+}
+
+/* ========== Kembali ke Menu Utama ========== */
+.backToMenuBtn {
+  margin-top: 20px;
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.backToMenuBtn:hover {
+  background: #1d4ed8;
+}

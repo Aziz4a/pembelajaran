@@ -1,0 +1,196 @@
+<style>
+  .quiz-item.correct .answer-box {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  .quiz-item.incorrect .answer-box {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  .check-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: background-color 0.3s;
+  }
+
+  .check-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .check-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  .answer-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: none;
+  }
+
+  .answer-feedback.show {
+    display: block;
+  }
+
+  .answer-feedback.correct {
+    background-color: #c8e6c9;
+    color: #1b5e20;
+    border-left: 4px solid #28a745;
+  }
+
+  .answer-feedback.incorrect {
+    background-color: #ffcdd2;
+    color: #b71c1c;
+    border-left: 4px solid #dc3545;
+  }
+
+  .answer-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .answer-input.correct-input {
+    background-color: #c8e6c9;
+    border-color: #28a745;
+  }
+
+  .answer-input.incorrect-input {
+    background-color: #ffcdd2;
+    border-color: #dc3545;
+  }
+</style>
+
+<section class="materi-detail fade-in" style="text-align: left;">
+  <h2>🧩 Quiz Bangun Ruang</h2>
+  <p>Kerjakan soal-soal berikut tentang bangun datar dan bangun ruang. Masukkan jawaban berupa angka tanpa pemisah.</p>
+
+  <div class="quiz-container">
+    <div class="quiz-item">
+      <h4>Soal 1</h4>
+      <img src="assets/img/Soal Quis Geometri No 1.jpg" alt="Soal 1" style="max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px;">
+      <div class="answer-box">
+        <!-- Accept either choice letter C or numeric 8 -->
+        <input type="text" class="answer-input" data-answer="C|8" placeholder="Masukkan jawaban Anda">
+        <button class="check-btn">Periksa</button>
+        <div class="answer-feedback"></div>
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <h4>Soal 2</h4>
+      <img src="assets/img/Soal Quis Geometri No 2.jpg" alt="Soal 2" style="max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px;">
+      <div class="answer-box">
+        <!-- Accept either choice letter A or numeric 6 -->
+        <input type="text" class="answer-input" data-answer="A|6" placeholder="Masukkan jawaban Anda">
+        <button class="check-btn">Periksa</button>
+        <div class="answer-feedback"></div>
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <h4>Soal 3</h4>
+      <img src="assets/img/Soal Quis Geometri No 3.jpg" alt="Soal 3" style="max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px;">
+      <div class="answer-box">
+        <!-- Accept either choice letter B or numeric 4 -->
+        <input type="text" class="answer-input" data-answer="B|4" placeholder="Masukkan jawaban Anda">
+        <button class="check-btn">Periksa</button>
+        <div class="answer-feedback"></div>
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <h4>Soal 4</h4>
+      <img src="assets/img/Soal Quis Geometri No 4.jpg" alt="Soal 4" style="max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px;">
+      <div class="answer-box">
+        <!-- Accept either choice letter B or numeric 5 -->
+        <input type="text" class="answer-input" data-answer="B|5" placeholder="Masukkan jawaban Anda">
+        <button class="check-btn">Periksa</button>
+        <div class="answer-feedback"></div>
+      </div>
+    </div>
+
+    <div class="quiz-item">
+      <h4>Soal 5</h4>
+      <img src="assets/img/Soal Quis Geometri No 5.jpg" alt="Soal 5" style="max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px;">
+      <div class="answer-box">
+        <!-- Accept numeric 8 (also accept '8 buku' variations) -->
+        <input type="text" class="answer-input" data-answer="8|8buku" placeholder="Masukkan jawaban Anda">
+        <button class="check-btn">Periksa</button>
+        <div class="answer-feedback"></div>
+      </div>
+    </div>
+
+  <p style="margin-top:18px"><em>Quiz ini tidak menyimpan skor.</em></p>
+</section>
+
+<script>
+  // Normalize answers: remove non-alphanumeric, lowercase
+  function normalizeAnswer(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+
+  // Handle quiz answer checking (supports multiple acceptable options separated by '|')
+  document.querySelectorAll('.check-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const quizItem = this.closest('.quiz-item');
+      const input = quizItem.querySelector('.answer-input');
+      const feedback = quizItem.querySelector('.answer-feedback');
+      const userAnswer = input.value.trim();
+      const correctRaw = input.getAttribute('data-answer') || '';
+
+      // If no correct answer is set yet, show message
+      if (!correctRaw.trim()) {
+        feedback.textContent = '⚠️ Jawaban kunci belum diatur untuk soal ini.';
+        feedback.classList.add('show', 'incorrect');
+        return;
+      }
+
+      const userNorm = normalizeAnswer(userAnswer);
+      const correctOptions = correctRaw.split('|').map(opt => normalizeAnswer(opt));
+      const isCorrect = correctOptions.includes(userNorm);
+
+      // Clear previous feedback
+      feedback.textContent = '';
+      feedback.className = 'answer-feedback show';
+
+      if (isCorrect) {
+        // Correct answer
+        quizItem.classList.remove('incorrect');
+        quizItem.classList.add('correct');
+        input.classList.remove('incorrect-input');
+        input.classList.add('correct-input');
+        feedback.classList.add('correct');
+        feedback.innerHTML = '✅ <strong>Jawaban Benar!</strong>';
+      } else {
+        // Incorrect answer
+        quizItem.classList.remove('correct');
+        quizItem.classList.add('incorrect');
+        input.classList.remove('correct-input');
+        input.classList.add('incorrect-input');
+        feedback.classList.add('incorrect');
+        // show a readable version of the first correct option
+        const firstCorrect = correctRaw.split('|')[0];
+        feedback.innerHTML = `❌ <strong>Jawaban Salah!</strong><br>Jawaban yang benar adalah: <strong>${firstCorrect}</strong>`;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,196 @@
+<style>
+  .quiz-item.correct .answer-box {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  .quiz-item.incorrect .answer-box {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  .check-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: background-color 0.3s;
+  }
+
+  .check-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .check-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  .answer-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: none;
+  }
+
+  .answer-feedback.show {
+    display: block;
+  }
+
+  .answer-feedback.correct {
+    background-color: #c8e6c9;
+    color: #1b5e20;
+    border-left: 4px solid #28a745;
+  }
+
+  .answer-feedback.incorrect {
+    background-color: #ffcdd2;
+    color: #b71c1c;
+    border-left: 4px solid #dc3545;
+  }
+
+  .answer-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .answer-input.correct-input {
+    background-color: #c8e6c9;
+    border-color: #28a745;
+  }
+
+  .answer-input.incorrect-input {
+    background-color: #ffcdd2;
+    border-color: #dc3545;
+  }
+</style>
+
+<section class="materi-detail fade-in" style="text-align: left;">
+  <h2>🧩 Quiz Bilangan</h2>
+  <p>Kerjakan soal-soal berikut (masukkan angka tanpa pemisah ribuan):</p>
+
+  <div class="quiz-block">
+    <h3>Perkalian</h3>
+    <div class="quiz-container">
+      <div class="quiz-item">
+        <h4>Soal 1</h4>
+        <div class="quiz-image">
+          <img src="assets/img/Soal Quis Bilangan No 1.jpg" alt="Soal Quis Bilangan No 1" style="max-width:100%;height:auto">
+        </div>
+        <div class="answer-box">
+            <input type="text" class="answer-input" data-answer="47348" placeholder="Masukkan jawaban untuk gambar (angka saja)">
+          <button class="check-btn">Periksa</button>
+          <div class="answer-feedback"></div>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <h4>Soal 2</h4>
+        <div class="quiz-image">
+          <img src="assets/img/Soal Quis Bilangan No 2.jpg" alt="Soal Quis Bilangan No 2" style="max-width:100%;height:auto">
+        </div>
+        <div class="answer-box">
+            <input type="text" class="answer-input" data-answer="22068" placeholder="Masukkan jawaban untuk gambar (angka saja)">
+          <button class="check-btn">Periksa</button>
+          <div class="answer-feedback"></div>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <h4>Soal 3</h4>
+        <div class="quiz-image">
+          <img src="assets/img/Soal Quis Bilangan No 3.jpg" alt="Soal Quis Bilangan No 3" style="max-width:100%;height:auto">
+        </div>
+        <div class="answer-box">
+            <input type="text" class="answer-input" data-answer="0.153" placeholder="Masukkan jawaban untuk gambar (angka saja)">
+          <button class="check-btn">Periksa</button>
+          <div class="answer-feedback"></div>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <h4>Soal 4</h4>
+        <div class="quiz-image">
+          <img src="assets/img/Soal Quis Bilangan No 4.jpg" alt="Soal Quis Bilangan No 4" style="max-width:100%;height:auto">
+        </div>
+        <div class="answer-box">
+            <input type="text" class="answer-input" data-answer="0.139" placeholder="Masukkan jawaban untuk gambar (angka saja)">
+          <button class="check-btn">Periksa</button>
+          <div class="answer-feedback"></div>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <h4>Soal 5</h4>
+        <div class="quiz-image">
+          <img src="assets/img/Soal Quis Bilangan No 5.jpg" alt="Soal Quis Bilangan No 5" style="max-width:100%;height:auto">
+        </div>
+        <div class="answer-box">
+            <input type="text" class="answer-input" data-answer="3400" placeholder="Masukkan jawaban untuk gambar (angka saja)">
+          <button class="check-btn">Periksa</button>
+          <div class="answer-feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:18px"><em>Quiz ini tidak menyimpan skor.</em></p>
+  </div>
+</section>
+
+<script>
+  // Handle quiz answer checking
+  document.querySelectorAll('.check-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const quizItem = this.closest('.quiz-item');
+      const input = quizItem.querySelector('.answer-input');
+      const feedback = quizItem.querySelector('.answer-feedback');
+      const userAnswer = input.value.trim();
+      const correctAnswer = input.getAttribute('data-answer').trim();
+
+      // If no correct answer is set yet, show message
+      if (!correctAnswer) {
+        feedback.textContent = '⚠️ Jawaban kunci belum diatur untuk soal ini.';
+        feedback.classList.add('show', 'incorrect');
+        return;
+      }
+
+      // Check if answer is correct
+      const isCorrect = userAnswer === correctAnswer;
+
+      // Clear previous feedback
+      feedback.textContent = '';
+      feedback.className = 'answer-feedback show';
+
+      if (isCorrect) {
+        // Correct answer
+        quizItem.classList.remove('incorrect');
+        quizItem.classList.add('correct');
+        input.classList.remove('incorrect-input');
+        input.classList.add('correct-input');
+        feedback.classList.add('correct');
+        feedback.innerHTML = '✅ <strong>Jawaban Benar!</strong>';
+      } else {
+        // Incorrect answer
+        quizItem.classList.remove('correct');
+        quizItem.classList.add('incorrect');
+        input.classList.remove('correct-input');
+        input.classList.add('incorrect-input');
+        feedback.classList.add('incorrect');
+        feedback.innerHTML = `❌ <strong>Jawaban Salah!</strong><br>Jawaban yang benar adalah: <strong>${correctAnswer}</strong>`;
+      }
+    });
+  });
+</script>

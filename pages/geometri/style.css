@@ -1,0 +1,28 @@
+/* ========== Background Halaman Geometri ========== */
+body[data-page="geometri"] {
+  background-image: url('../../img/lkpd.jpg'); /* Pastikan path-nya benar */
+}
+
+/* ========== Grid untuk Halaman Geometri ========== */
+.lkpd-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 22px;
+}
+
+.lkpd-card {
+  background: #e8f1ff;
+  border: 2px solid #a0c4ff;
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: .25s;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.lkpd-card:hover {
+  background: #d7e7ff;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,515 @@
+/* ========== Dasar ========== */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111 url('../img/beranda.jpg') center/cover no-repeat fixed; /* Gambar default */
+  flex-direction: column;
+  padding: 20px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+  z-index: 0;
+}
+
+#content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ========== Layout umum card konten ========== */
+.page-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 56px auto;
+  background: #fff;
+  color: #1f2937;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+  padding: 40px 32px 60px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* ========== Menu Utama & Portal ========== */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.menu-container h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.menu-btn {
+  width: 220px;
+  padding: 14px 0;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #e6f4ff;
+  color: #111;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+  transition: .25s;
+}
+
+.menu-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Portal Styles */
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+.portal-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.portal-card:hover {
+  transform: translateY(-5px);
+  border-color: #2563eb;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
+}
+
+.portal-card h3 {
+  color: #1f2937;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.portal-card p {
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.portal-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: #2563eb;
+}
+
+.portal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #2563eb, #60a5fa);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.portal-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Styles untuk konten materi */
+.materi-content {
+  margin-top: 24px;
+  min-height: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px 28px 36px;
+  box-shadow: 0 6px 18px rgba(13, 18, 28, 0.06);
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  color: #1f2937;
+}
+
+/* Kotak materi dengan bayangan dan border */
+.materi-box {
+  background: #f8fafc;
+  border: 1px solid #e6eefc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.04);
+}
+
+/* Box untuk contoh dengan warna berbeda */
+.contoh-box {
+  background: #e6f4ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+/* Box untuk tips dengan warna berbeda */
+.tips-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+/* Box untuk teknik dengan warna berbeda */
+.teknik-box {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+/* Representasi jenis box */
+.representasi-jenis {
+  background: #faf5ff;
+  border: 1px solid #e9d5ff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.materi-item {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.example {
+  background: #e6f4ff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+
+/* Typography for materi */
+.materi-detail h2 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.materi-content h3 {
+  font-size: 1.25rem;
+  margin-top: 18px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+.materi-content h4, .materi-content h5 {
+  font-size: 1.05rem;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+.materi-content p { margin-bottom: 12px; color: #374151; }
+.materi-content ul { margin-left: 1.1rem; margin-bottom: 12px; color: #374151; }
+.materi-content ol { margin-left: 1.1rem; margin-bottom: 12px; color: #374151; }
+
+/* Table of Contents */
+.toc {
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  border: 1px solid #eef2ff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(37,99,235,0.04);
+  margin-bottom: 18px;
+}
+.toc h4 { margin: 0 0 8px 0; font-size: 0.98rem; }
+.toc ul { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: 6px 0; }
+.toc a { color: #2563eb; text-decoration: none; font-weight: 600; }
+.toc a:hover { text-decoration: underline; }
+
+/* Small helpers */
+.muted { color: #6b7280; }
+
+/* Make content responsive */
+@media (max-width: 640px){
+  .materi-content { padding: 18px; max-width: 100%; }
+  .portal-card { padding: 18px; }
+}
+
+/* Styles untuk LKPD */
+.soal-item {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* LKPD Cards Overview (global) */
+.lkpd-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 18px;
+}
+
+.lkpd-card {
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  border: 1px solid rgba(37,99,235,0.12);
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lkpd-card h3 { margin: 0; color: #0f172a; font-size: 1.05rem; }
+.lkpd-card p { margin: 0; color: #475569; font-size: 0.95rem; }
+
+.lkpd-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(37,99,235,0.12);
+  border-color: rgba(37,99,235,0.22);
+}
+
+.lkpd-card .tag {
+  display: inline-block;
+  background: #e6f4ff;
+  color: #2563eb;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  align-self: flex-start;
+}
+
+.answer-input {
+  width: 100%;
+  max-width: 200px;
+  padding: 8px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.submit-btn {
+  background: #2563eb;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Animasi Fade */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quick loader / placeholder saat memuat halaman */
+.page-container.loading {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 5px solid rgba(37,99,235,0.15);
+  border-top-color: #2563eb;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== Kembali ke Menu Utama ========== */
+.backBtn {
+  display: inline-block;
+  margin-top: 28px;
+  background: #2563eb;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.backBtn:hover {
+  background: #1d4ed8;
+}
+
+/* Tombol Ganti Nama - pojok kanan bawah, lebih besar dan terlihat */
+.ganti-nama-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.2);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ganti-nama-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Make button slightly larger on small screens */
+@media (max-width: 480px) {
+  .ganti-nama-btn {
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Modal Ganti Nama */
+.name-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 10000;
+  pointer-events: none;
+}
+.name-modal.is-open { pointer-events: auto; }
+.name-modal-overlay {
+  position: absolute; inset: 0; background: rgba(2,6,23,0.6); backdrop-filter: blur(4px);
+}
+.name-modal-box {
+  position: relative; z-index: 2; width: 100%; max-width: 420px; margin: 20px;
+  transform: translateY(12px); opacity: 0; transition: all .28s cubic-bezier(.2,.9,.2,1);
+}
+.name-modal.is-open .name-modal-box { transform: translateY(0); opacity: 1; }
+.name-modal-body{
+  background: linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
+  padding: 22px; border-radius: 14px; box-shadow: 0 12px 30px rgba(2,6,23,0.18);
+  text-align: center;
+}
+.name-avatar{ font-size: 40px; margin-bottom: 6px; }
+.name-modal-body h3 { margin: 6px 0 4px; }
+.name-modal-body .muted { color: #6b7280; font-size: 0.95rem; margin-bottom: 12px; }
+.name-modal-body input#nameModalInput{
+  width: 100%; padding: 12px 14px; border-radius: 10px; border: 2px solid #e6eefc; margin-top: 8px;
+  font-size: 1rem; outline: none; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.name-modal-body input#nameModalInput.input-error{ animation: shake .36s; border-color: #ef4444; }
+@keyframes shake{ 0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)} }
+.name-modal-actions{ display:flex; gap:10px; justify-content:center; margin-top:14px; }
+.name-modal-close{ position:absolute; right:8px; top:8px; background:transparent; border:none; font-size:20px; cursor:pointer; color:#374151 }
+.name-modal .menu-btn{ padding:10px 18px; border-radius:10px; }
+.name-modal .backBtn{ padding:10px 16px; border-radius:10px; }
+
+/* ========== Tabel Skor ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+/* Background untuk setiap halaman */
+body[data-page="materi"] {
+  background-image: url('../img/materi.jpg');
+}
+
+body[data-page="lkpd1"] {
+  background-image: url('../img/lkpd1.jpg');
+}
+
+body[data-page="lkpd2"] {
+  background-image: url('../img/lkpd2.jpg');
+}
+
+body[data-page="lkpd3"] {
+  background-image: url('../img/lkpd3.jpg');
+}
+
+body[data-page="evaluasi"] {
+  background-image: url('../img/evaluasi.jpg');
+}
+
+body[data-page="quiz"] {
+  background-image: url('../img/quis.jpg');
+}
+
+body[data-page="bilangan"] {
+  background-image: url('../img/materi.jpg');
+}
+
+body[data-page="geometri"] {
+  background-image: url('../img/materi.jpg');
+}

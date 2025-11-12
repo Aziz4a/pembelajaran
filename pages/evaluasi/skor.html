@@ -1,0 +1,16 @@
+<section class="materi-detail fade-in">
+  <h2>📊 Skor Evaluasi</h2>
+  <div id="wrapSkor">Memuat...</div>
+</section>
+<script>
+  const data = window.ambilSkor();
+  const el = document.getElementById('wrapSkor');
+  const rows = Object.entries(data).map(([k,v])=>{
+    const t = new Date(v.waktu).toLocaleString('id-ID');
+    const judul = k[0].toUpperCase()+k.slice(1);
+    return `<tr><td>${judul}</td><td>${v.nilai}</td><td>${t}</td></tr>`;
+  }).join('');
+  el.innerHTML = rows
+    ? `<table><tr><th>Jenis</th><th>Nilai</th><th>Waktu</th></tr>${rows}</table>`
+    : 'Belum ada skor tersimpan.';
+</script>

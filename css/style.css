@@ -1,0 +1,234 @@
+/* ========== Dasar ========== */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Mengatur konten agar berada di atas dan bawah */
+  justify-content: center;
+  align-items: center;
+  background: #111 url('../img/beranda.jpg') center/cover no-repeat fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+#content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px; /* Mengatur lebar konten agar lebih responsif */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Menjaga konten tetap berada di tengah */
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========== Layout umum card konten ========== */
+.page-container {
+  width: min(900px, 92vw);
+  margin: 56px auto;
+  background: #fff;
+  color: #1f2937;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  padding: 40px 32px 60px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Mengatur agar konten lebih teratur */
+  align-items: center;
+}
+
+/* ========== Menu Utama ========== */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px; /* Membatasi lebar agar tidak terlalu lebar */
+  margin-bottom: 24px;
+}
+
+.menu-btn {
+  width: 220px;
+  padding: 14px 0;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #e6f4ff;
+  color: #111;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  transition: 0.25s;
+  margin-bottom: 10px;
+}
+
+.menu-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+#gantiNamaBtn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  border: 0;
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  background: #bbf7d0;
+  color: #064e3b;
+  font-weight: 600;
+}
+
+#gantiNamaBtn:hover {
+  background: #86efac;
+}
+
+/* ========== Grid kartu pilihan ========== */
+.materi-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 22px;
+  justify-content: center;
+  width: 100%; /* Memastikan grid mengisi seluruh lebar */
+}
+
+.materi-card {
+  background: #eef4ff;
+  border: 2px solid #bcd3ff;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.materi-card:hover {
+  background: #dfeaff;
+  transform: translateY(-2px);
+}
+
+/* ========== LKPD grid ========== */
+.lkpd-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 22px;
+  justify-content: center;
+}
+
+.lkpd-card {
+  background: #e8f1ff;
+  border: 2px solid #a0c4ff;
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: 0.25s;
+  text-align: center;
+}
+
+.lkpd-card:hover {
+  background: #d7e7ff;
+  transform: translateY(-2px);
+}
+
+.backBtn {
+  display: inline-block;
+  margin-top: 28px;
+  background: #2563eb;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  background: #1d4ed8;
+}
+
+/* tabel skor */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+/* Default beranda */
+body {
+  background-image: url('../img/beranda.jpg');
+}
+
+/* Mapping sementara */
+body[data-page="bilangan"] {
+  background-image: url('../img/materi.jpg');
+}
+
+body[data-page="geometri"] {
+  background-image: url('../img/lkpd.jpg');
+}
+
+body[data-page="quiz"] {
+  background-image: url('../img/game.jpg');
+}
+
+body[data-page="evaluasi"] {
+  background-image: url('../img/evaluasi.jpg');
+}
+
+/* ========== Perbaikan layout pada kartu dan tombol ========== */
+.menu-btn {
+  padding: 16px 0;
+  font-size: 18px;
+}
+
+.materi-card,
+.lkpd-card {
+  min-width: 240px;
+  padding: 16px;
+}
+
+.materi-card:hover,
+.lkpd-card:hover {
+  background: #cce4ff;
+}
+
+/* Mapping halaman dengan background yang sesuai */
+body[data-page="bilangan"] {
+  background-image: url('assets/img/materi.jpg');
+}
+
+body[data-page="geometri"] {
+  background-image: url('assets/img/lkpd.jpg');
+}
+
+body[data-page="quiz"] {
+  background-image: url('assets/img/game.jpg');
+}
+
+body[data-page="evaluasi"] {
+  background-image: url('assets/img/evaluasi.jpg');
+}

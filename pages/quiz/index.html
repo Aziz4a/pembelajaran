@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script defer src="../../assets/js/main.js"></script>
+</head>
+<body data-page="quiz">
+  <div id="content"></div> <!-- Tempat untuk konten yang dinamis -->
+
+  <section class="materi-section fade-in page-container">
+    <h2>Quiz Pembelajaran</h2>
+    <p>Uji pemahaman materi Anda:</p>
+    
+    <div class="portal-grid">
+      <!-- Quiz Bilangan -->
+      <div class="portal-card subpage-btn" data-page="quiz/bilangan.html" style="cursor: pointer;">
+        <div class="icon">🔢</div>
+        <h3>Quiz Bilangan</h3>
+        <p>Latihan soal tentang bilangan cacah, operasi hitung, dan konsep matematika dasar.</p>
+        <ul style="text-align: left; margin-top: 10px; font-size: 0.9rem;">
+          <li>Perkalian & Pembagian</li>
+          <li>Operasi Hitung</li>
+          <li>Pemecahan Masalah</li>
+        </ul>
+      </div>
+
+      <!-- Quiz Geometri -->
+      <div class="portal-card subpage-btn" data-page="quiz/geometri.html" style="cursor: pointer;">
+        <div class="icon">📐</div>
+        <h3>Quiz Geometri</h3>
+        <p>Latihan soal tentang bangun datar, bangun ruang, dan sifat-sifatnya.</p>
+        <ul style="text-align: left; margin-top: 10px; font-size: 0.9rem;">
+          <li>Gabungan Bangun Ruang</li>
+          <li>Bangun Ruang & Volume</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

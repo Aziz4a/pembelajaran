@@ -1,0 +1,117 @@
+.lkpd-content {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lkpd-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.lkpd-section h3 {
+  color: #2563eb;
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+.lkpd-section ul, .lkpd-section ol {
+  margin-left: 24px;
+  line-height: 1.6;
+}
+
+.lkpd-section li {
+  margin-bottom: 8px;
+}
+
+.task-item {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question {
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.answer-box {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+
+.answer-input {
+  flex: 1;
+  max-width: 200px;
+  padding: 8px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.check-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.check-btn:hover {
+  background: #1d4ed8;
+}
+
+.back-nav {
+  margin-bottom: 24px;
+}
+
+.back-btn {
+  background: transparent;
+  border: 2px solid #2563eb;
+  color: #2563eb;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: #2563eb;
+  color: white;
+}
+
+/* Toast / notification used for answer feedback */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  min-width: 180px;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.2);
+  z-index: 10001;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+.toast.is-visible{ opacity: 1; transform: translateY(0); }
+.toast--success{ background: linear-gradient(90deg,#16a34a,#4ade80); }
+.toast--error{ background: linear-gradient(90deg,#ef4444,#fb7185); }
+.toast .toast-icon{ font-size: 18px; }
+.toast .toast-msg{ flex:1; font-size: 0.95rem; }
